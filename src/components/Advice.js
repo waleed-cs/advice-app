@@ -9,7 +9,6 @@ const Advice = () => {
     const { data } = await axios.get(
       `https://api.adviceslip.com/advice?t=${Math.random()}`
     );
-    console.log(data.slip);
     setAdviceData(data.slip);
   };
   useEffect(() => {
@@ -19,7 +18,7 @@ const Advice = () => {
     <>
       {adviceData && (
         <div className="container">
-          <div className="advice_output">
+          <div className="advice_output" key={adviceData.id}>
             <h1 className="title">Advice #{adviceData.id}</h1>
             <p className="advice">
               <q>{adviceData.advice}</q>
